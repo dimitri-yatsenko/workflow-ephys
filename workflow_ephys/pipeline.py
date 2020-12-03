@@ -12,7 +12,7 @@ if 'custom' not in dj.config:
 db_prefix = dj.config['custom'].get('database.prefix', '')
 
 
-# ============== Activate "lab" and "subject" schema ==============
+# ------------ Activate the "lab" and "subject" schemas ----------------
 
 lab.activate(db_prefix + 'lab')
 
@@ -31,7 +31,7 @@ class SkullReference(dj.Lookup):
     contents = zip(['Bregma', 'Lambda'])
 
 
-# ============== Declare Session table ==============
+# ------------ Declare the Session table --------------
 
 schema = dj.schema(db_prefix + 'experiment')
 
@@ -44,8 +44,7 @@ class Session(dj.Manual):
     """
 
 
-# ============== Activate "ephys" schema ==============
-probe.activate(db_prefix + 'probe')
+# -------------- Activate the "ephys" schema ---------
 ephys.activate(db_prefix + 'ephys', db_prefix + 'probe',
                add_objects=dict(
                    # upstream tables
